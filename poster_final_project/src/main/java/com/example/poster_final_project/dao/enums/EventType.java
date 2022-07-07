@@ -1,0 +1,6 @@
+package com.example.poster_final_project.dao.enums;
+
+public enum EventType {
+    FILMS,
+    CONCERTS;
+}
