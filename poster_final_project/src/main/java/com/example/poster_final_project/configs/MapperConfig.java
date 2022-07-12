@@ -1,5 +1,6 @@
 package com.example.poster_final_project.configs;
 
+import com.example.poster_final_project.service.mappers.EventConcertMapper;
 import com.example.poster_final_project.service.mappers.EventFilmsMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -18,5 +19,10 @@ public class MapperConfig {
     @Bean
     public EventFilmsMapper filmsMapper(ModelMapper mapper,WebClient webClient) {
         return new EventFilmsMapper(mapper, webClient);
+    }
+
+    @Bean
+    public EventConcertMapper concertMapper(ModelMapper mapper,WebClient webClient) {
+        return new EventConcertMapper(mapper,webClient);
     }
 }

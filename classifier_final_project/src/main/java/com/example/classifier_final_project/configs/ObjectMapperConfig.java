@@ -1,7 +1,7 @@
 package com.example.classifier_final_project.configs;
 
-import com.example.classifier_final_project.controllers.api.json.LocalDateTimeDeserializer;
-import com.example.classifier_final_project.controllers.api.json.LocalDateTimeSerializer;
+import com.example.classifier_final_project.controllers.util.json.LocalDateTimeDeserializer;
+import com.example.classifier_final_project.controllers.util.json.LocalDateTimeSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import org.springframework.context.annotation.Bean;

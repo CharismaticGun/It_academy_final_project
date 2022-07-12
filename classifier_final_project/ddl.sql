@@ -1,6 +1,6 @@
 
 
-CREATE DATABASE classifier_final
+CREATE DATABASE  classifier_final
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'

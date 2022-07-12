@@ -1,20 +1,22 @@
 package com.example.classifier_final_project.controllers.api;
 
 
-import com.example.classifier_final_project.service.dto.PageToReadCountry;
+import com.example.classifier_final_project.service.dto.PageToReadClassifier;
 import com.example.classifier_final_project.service.dto.countries.CountryToCreate;
+import com.example.classifier_final_project.service.dto.countries.CountryToRead;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-public interface ICountryController extends IClassifierController<CountryToCreate, PageToReadCountry> {
+
+public interface ICountryController extends IClassifierController<CountryToCreate, PageToReadClassifier<CountryToRead>> {
 
     @Override
     @PostMapping("/country")
-    ResponseEntity<CountryToCreate> create(@RequestBody CountryToCreate classifier);
+    ResponseEntity<CountryToCreate> create( @RequestBody CountryToCreate classifier);
 
     @Override
     @GetMapping("/country")
-    ResponseEntity<PageToReadCountry> getPageOfClassifier(@RequestParam(name = "size", required = false,
+    ResponseEntity<PageToReadClassifier<CountryToRead>> getPageOfClassifier(@RequestParam(name = "size", required = false,
                                                                 defaultValue = "25") Integer size,
                                                   @RequestParam(name = "page", required = false,
                                                                 defaultValue = "1") Integer page);

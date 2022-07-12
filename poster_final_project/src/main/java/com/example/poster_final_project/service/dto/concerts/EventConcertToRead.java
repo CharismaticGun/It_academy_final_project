@@ -3,15 +3,16 @@ package com.example.poster_final_project.service.dto.concerts;
 import com.example.poster_final_project.dao.enums.EventStatus;
 import com.example.poster_final_project.dao.enums.EventType;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class EventConcertToRead {
 
     private UUID uuid;
 
-    private Long dtCreate;
+    private LocalDateTime dtCreate;
 
-    private Long dtUpdate;
+    private LocalDateTime dtUpdate;
 
     private String title;
 
@@ -29,7 +30,7 @@ public class EventConcertToRead {
 
     protected EventConcertToRead(){}
 
-    public EventConcertToRead(UUID uuid, Long dtCreate, Long dtUpdate, String title,
+    public EventConcertToRead(UUID uuid, LocalDateTime dtCreate, LocalDateTime dtUpdate, String title,
                               String description, Integer dtEvent, Integer dtEndOfSale,
                               EventType type, EventStatus status, UUID category) {
         this.uuid = uuid;
@@ -52,19 +53,19 @@ public class EventConcertToRead {
         this.uuid = uuid;
     }
 
-    public Long getDtCreate() {
+    public LocalDateTime getDtCreate() {
         return dtCreate;
     }
 
-    public void setDtCreate(Long dtCreate) {
+    public void setDtCreate(LocalDateTime dtCreate) {
         this.dtCreate = dtCreate;
     }
 
-    public Long getDtUpdate() {
+    public LocalDateTime getDtUpdate() {
         return dtUpdate;
     }
 
-    public void setDtUpdate(Long dtUpdate) {
+    public void setDtUpdate(LocalDateTime dtUpdate) {
         this.dtUpdate = dtUpdate;
     }
 
@@ -128,9 +129,9 @@ public class EventConcertToRead {
 
         private UUID uuid;
 
-        private Long dtCreate;
+        private LocalDateTime dtCreate;
 
-        private Long dtUpdate;
+        private LocalDateTime dtUpdate;
 
         private String title;
 
@@ -151,12 +152,12 @@ public class EventConcertToRead {
             return this;
         }
 
-        public Builder setDtCreate(Long dtCreate) {
+        public Builder setDtCreate(LocalDateTime dtCreate) {
             this.dtCreate = dtCreate;
             return this;
         }
 
-        public Builder setDtUpdate(Long dtUpdate) {
+        public Builder setDtUpdate(LocalDateTime dtUpdate) {
             this.dtUpdate = dtUpdate;
             return this;
         }

@@ -4,20 +4,25 @@ package com.example.classifier_final_project.service;
 import com.example.classifier_final_project.dao.entity.ConcertCategory;
 import com.example.classifier_final_project.dao.repositories.ConcertRepository;
 import com.example.classifier_final_project.service.api.IConcertService;
-import com.example.classifier_final_project.service.dto.PageToReadConcert;
+import com.example.classifier_final_project.service.dto.PageToReadClassifier;
 import com.example.classifier_final_project.service.dto.concerts.ConcertToCreate;
+import com.example.classifier_final_project.service.dto.concerts.ConcertToRead;
 import com.example.classifier_final_project.service.mappers.ConcertMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
+
+import javax.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
 
 
 @Service
+
 public class ConcertService implements IConcertService {
 
     private final ConcertRepository concertRepository;
@@ -32,7 +37,7 @@ public class ConcertService implements IConcertService {
 
 
     @Override
-    public ConcertToCreate create(ConcertToCreate classifier) {
+    public ConcertToCreate create( ConcertToCreate classifier) {
 
         ConcertCategory concertCategory = mapper.fromDtoToEntity(classifier);
 
@@ -42,7 +47,7 @@ public class ConcertService implements IConcertService {
     }
 
     @Override
-    public PageToReadConcert getPageOfClassifier(Integer size, Integer page) {
+    public PageToReadClassifier<ConcertToRead> getPageOfClassifier(Integer size, Integer page) {
 
         Page<ConcertCategory> entityRead = concertRepository.findAll(
                 PageRequest.of(--page, size, Sort.by(Sort.Direction.ASC, "title")));

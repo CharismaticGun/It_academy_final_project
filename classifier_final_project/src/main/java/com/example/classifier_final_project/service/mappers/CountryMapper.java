@@ -2,7 +2,7 @@ package com.example.classifier_final_project.service.mappers;
 
 import com.example.classifier_final_project.dao.entity.Country;
 import com.example.classifier_final_project.service.api.DTOMapper;
-import com.example.classifier_final_project.service.dto.PageToReadCountry;
+import com.example.classifier_final_project.service.dto.PageToReadClassifier;
 import com.example.classifier_final_project.service.dto.countries.CountryToCreate;
 import com.example.classifier_final_project.service.dto.countries.CountryToRead;
 import org.modelmapper.ModelMapper;
@@ -12,7 +12,7 @@ import org.springframework.data.domain.Page;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class CountryMapper implements DTOMapper<Country, CountryToCreate, CountryToRead, PageToReadCountry> {
+public class CountryMapper implements DTOMapper<Country, CountryToCreate, CountryToRead, PageToReadClassifier<CountryToRead>> {
 
     private final ModelMapper mapper;
 
@@ -36,8 +36,8 @@ public class CountryMapper implements DTOMapper<Country, CountryToCreate, Countr
     }
 
     @Override
-    public PageToReadCountry fromEntityPageToDtoPage(Page<Country> countries) {
-        PageToReadCountry pageToReadCountry = mapper.map(countries,PageToReadCountry.class);
+    public PageToReadClassifier<CountryToRead> fromEntityPageToDtoPage(Page<Country> countries) {
+        PageToReadClassifier<CountryToRead> pageToReadCountry = mapper.map(countries,PageToReadClassifier.class);
         pageToReadCountry.setNumber(pageToReadCountry.getNumber()+1);
         return pageToReadCountry;
     }

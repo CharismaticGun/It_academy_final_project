@@ -4,15 +4,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.*;
 
 @RestControllerAdvice
 public class GlobalHandler {
+
+    private static final String LOG_REF = "log_ref";
+
+    private static final String MESSAGE = "message";
+
+    private static final String ERROR = "error";
+
+    private static final String STRUCTURED_ERROR = "structured_error";
+
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -41,4 +47,32 @@ public class GlobalHandler {
 
         return data;
     }
+
+  @ExceptionHandler
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public List<Map<String,Object>> handle(ConstraintViolationException e) {
+
+      final Map<String,Object> mapHandler = new HashMap<>();
+      final Map<String,String> errorMap = new HashMap<>();
+      final List<Map<String,String>> errors = new ArrayList<>();
+      final List<Map<String,Object>> listHandler = new ArrayList<>();
+
+      Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
+
+      constraintViolations.forEach(constraintViolation ->
+              constraintViolation.getPropertyPath().forEach(node ->
+              errorMap.put(constraintViolation.getMessage(),node.getName())));
+
+      for (Map.Entry<String, String> stringStringEntry : errorMap.entrySet()) {
+          errors.add(Map.of(MESSAGE,stringStringEntry.getKey(),"field",stringStringEntry.getValue()));
+      }
+
+      mapHandler.put(LOG_REF,STRUCTURED_ERROR);
+
+      mapHandler.put("errors",errors);
+
+      listHandler.add(mapHandler);
+
+      return listHandler;
+  }
 }

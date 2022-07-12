@@ -2,7 +2,7 @@ package com.example.classifier_final_project.service.mappers;
 
 import com.example.classifier_final_project.dao.entity.ConcertCategory;
 import com.example.classifier_final_project.service.api.DTOMapper;
-import com.example.classifier_final_project.service.dto.PageToReadConcert;
+import com.example.classifier_final_project.service.dto.PageToReadClassifier;
 import com.example.classifier_final_project.service.dto.concerts.ConcertToCreate;
 import com.example.classifier_final_project.service.dto.concerts.ConcertToRead;
 import org.modelmapper.ModelMapper;
@@ -12,7 +12,8 @@ import org.springframework.data.domain.Page;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class ConcertMapper implements DTOMapper<ConcertCategory, ConcertToCreate, ConcertToRead, PageToReadConcert> {
+public class ConcertMapper implements DTOMapper<ConcertCategory,
+        ConcertToCreate, ConcertToRead, PageToReadClassifier<ConcertToRead>> {
 
     private final ModelMapper mapper;
 
@@ -37,9 +38,9 @@ public class ConcertMapper implements DTOMapper<ConcertCategory, ConcertToCreate
     }
 
     @Override
-    public PageToReadConcert fromEntityPageToDtoPage(Page<ConcertCategory> concertCategories) {
-        PageToReadConcert pageToReadConcert = mapper.map(concertCategories,PageToReadConcert.class);
-        pageToReadConcert.setNumber(pageToReadConcert.getNumber()+1);
-        return pageToReadConcert;
+    public PageToReadClassifier<ConcertToRead> fromEntityPageToDtoPage(Page<ConcertCategory> concertCategories) {
+        PageToReadClassifier<ConcertToRead> pageToReadClassifier = mapper.map(concertCategories, PageToReadClassifier.class);
+        pageToReadClassifier.setNumber(pageToReadClassifier.getNumber()+1);
+        return pageToReadClassifier;
     }
 }

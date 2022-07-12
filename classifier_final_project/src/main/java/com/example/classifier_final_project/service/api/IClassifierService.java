@@ -1,15 +1,21 @@
 package com.example.classifier_final_project.service.api;
 
 
+import com.example.classifier_final_project.service.dto.api.IPage;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
+
 
 @Transactional(readOnly = true)
-public interface IClassifierService<C,R> {
+@Validated
+public interface IClassifierService<C,P extends IPage<?>> {
 
     @Transactional()
-    C create(C classifier);
+    C create(@Valid C classifier);
 
-    R getPageOfClassifier(Integer size, Integer page);
+    P getPageOfClassifier(Integer size, Integer page);
 
     Boolean searchByUuid(String uuid);
 

@@ -2,9 +2,10 @@ package com.example.classifier_final_project.controllers;
 
 
 import com.example.classifier_final_project.controllers.api.ICountryController;
-import com.example.classifier_final_project.service.dto.PageToReadCountry;
+import com.example.classifier_final_project.service.dto.PageToReadClassifier;
 import com.example.classifier_final_project.service.dto.countries.CountryToCreate;
 import com.example.classifier_final_project.service.api.ICountryService;
+import com.example.classifier_final_project.service.dto.countries.CountryToRead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class CountryController implements ICountryController {
     }
 
     @Override
-    public ResponseEntity<PageToReadCountry> getPageOfClassifier(Integer size, Integer page) {
+    public ResponseEntity<PageToReadClassifier<CountryToRead>> getPageOfClassifier(Integer size, Integer page) {
         return ResponseEntity.ok(countryService.getPageOfClassifier(size,page));
     }
 

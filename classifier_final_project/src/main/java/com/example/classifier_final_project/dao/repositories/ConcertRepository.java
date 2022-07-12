@@ -1,7 +1,6 @@
 package com.example.classifier_final_project.dao.repositories;
 
 import com.example.classifier_final_project.dao.entity.ConcertCategory;
-import com.example.classifier_final_project.dao.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

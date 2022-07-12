@@ -4,10 +4,9 @@ import com.example.poster_final_project.dao.entity.EventFilm;
 import com.example.poster_final_project.dao.enums.EventStatus;
 import com.example.poster_final_project.dao.repositories.EventFilmRepository;
 import com.example.poster_final_project.service.api.IEventFilmService;
-import com.example.poster_final_project.service.api.IEventService;
+import com.example.poster_final_project.service.dto.PageToReadEvent;
 import com.example.poster_final_project.service.dto.films.EventFilmToCreate;
 import com.example.poster_final_project.service.dto.films.EventFilmsToRead;
-import com.example.poster_final_project.service.dto.films.PageEventFilmsToShow;
 import com.example.poster_final_project.service.exceptions.EventNotFoundException;
 import com.example.poster_final_project.service.mappers.EventFilmsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,8 +75,9 @@ public class EventFilmService implements IEventFilmService {
         }
 
     @Override
-    public PageEventFilmsToShow readEventPage(int size, int page) {
-        Page<EventFilm> title = repository.findAll(PageRequest.of(--page, size, Sort.by(Sort.Direction.ASC, "title")));
+    public PageToReadEvent<EventFilmsToRead> readEventPage(int size, int page) {
+        Page<EventFilm> title = repository.findAll(PageRequest.of(
+                --page, size, Sort.by(Sort.Direction.ASC, "title")));
         return mapper.fromEntityPageToDtoPage(title);
     }
 }
