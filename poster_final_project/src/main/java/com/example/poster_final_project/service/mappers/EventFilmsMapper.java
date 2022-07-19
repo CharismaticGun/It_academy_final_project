@@ -4,19 +4,20 @@ import com.example.poster_final_project.dao.entity.EventFilm;
 import com.example.poster_final_project.dao.enums.EventStatus;
 import com.example.poster_final_project.service.api.DTOMapper;
 import com.example.poster_final_project.service.dto.PageToReadEvent;
-import com.example.poster_final_project.service.dto.concerts.EventConcertToRead;
 import com.example.poster_final_project.service.dto.films.EventFilmToCreate;
 import com.example.poster_final_project.service.dto.films.EventFilmsToRead;
 import com.example.poster_final_project.service.exceptions.CountryNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 
-public class EventFilmsMapper implements DTOMapper<EventFilm, EventFilmToCreate,EventFilmsToRead,  PageToReadEvent<EventFilmsToRead>> {
+public class EventFilmsMapper implements DTOMapper<EventFilm, EventFilmToCreate,
+        EventFilmsToRead, PageToReadEvent<EventFilmsToRead>> {
 
     private final ModelMapper mapper;
 

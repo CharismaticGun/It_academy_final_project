@@ -1,7 +1,6 @@
 package com.example.poster_final_project.service.dto;
 
 import com.example.poster_final_project.service.dto.api.IPage;
-import com.example.poster_final_project.service.dto.concerts.EventConcertToRead;
 
 import java.util.List;
 

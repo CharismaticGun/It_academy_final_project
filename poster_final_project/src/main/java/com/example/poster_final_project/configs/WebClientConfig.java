@@ -10,8 +10,11 @@ public class WebClientConfig {
 
     private static final String BASE_URL = "http://localhost/classifier";
 
+    private static final String USER_URL = "http://localhost/users";
+
     @Bean
     public WebClient webClient() {
         return WebClient.builder().baseUrl(BASE_URL).clientConnector(new ReactorClientHttpConnector()).build();
     }
+    
 }

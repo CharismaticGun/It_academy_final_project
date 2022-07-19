@@ -6,10 +6,10 @@ import com.example.poster_final_project.service.api.DTOMapper;
 import com.example.poster_final_project.service.dto.PageToReadEvent;
 import com.example.poster_final_project.service.dto.concerts.EventConcertToCreate;
 import com.example.poster_final_project.service.dto.concerts.EventConcertToRead;
-import com.example.poster_final_project.service.dto.films.EventFilmsToRead;
 import com.example.poster_final_project.service.exceptions.ConcertCategoryNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -24,7 +24,7 @@ public class EventConcertMapper implements
     private final WebClient webClient;
 
     @Autowired
-    public EventConcertMapper(ModelMapper modelMapper,WebClient webClient) {
+    public EventConcertMapper(ModelMapper modelMapper, WebClient webClient) {
         this.modelMapper = modelMapper;
         this.webClient = webClient;
     }
