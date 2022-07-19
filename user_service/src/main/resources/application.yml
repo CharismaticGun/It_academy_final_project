@@ -1,0 +1,12 @@
+spring:
+    datasource:
+        username: postgres
+        password: postgres
+        url: jdbc:postgresql://localhost:5432/user_final?currentSchema=final_project_user
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+            ddl-auto: none
+        show-sql: true
+server:
+    port: 80
